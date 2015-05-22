@@ -63,7 +63,7 @@ post '/' do
   else
     erb :form  
 end    
-    @error = "Oops! You should enter a valid birthdate in the form of mmddyyyy. Try again!"
+    @error = "Oops! You should enter a valid birthdate in the form of mm-dd-yyyy. Try again!"
 end
 
 def setup_index_view
