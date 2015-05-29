@@ -1,23 +1,50 @@
-<!doctype html>
-<head>
-  <meta charset="utf-8">
-  <title>Numerology App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/people.css">  
-</head>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Numerology App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/people.css"> 
+  </head>
+
 <body>
 <div class="container">
 <div class="header">
 <h1 class="bg-info">Numerology Calculator <small>A Skillcrush Project</small></h1>
-
-
 </div>
 
-<hr />
+    <nav class="navbar navbar-inverse navbar-fixed-bottom navbar-custom" role="navigation">
+      <div class="container" id="navbar-container">
+        
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Your Numerology</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/people/new">Add Person</a>
+                </li>
+                <li>
+                    <a href="/people">View People</a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    
+</nav>
 
-<%= yield %>
-
-</div>
-
-</body>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
 </html>
