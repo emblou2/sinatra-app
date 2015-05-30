@@ -14,25 +14,17 @@ get '/' do
   erb :form
 end
 
-  post '/' do
-    if params[:birthdate].include?("-")
-      birthdate = params[:birthdate]
-    else
-      birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
-    end
-  
-    @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
-    if @person.valid?
-      @person.save
-      redirect "/people/#{@person.id}"
-    else
-      @errors = ''
-      @person.errors.full_messages.each do |message|
-        @errors = "#{@errors} #{message}."
+post '/' do
+  birthdate = params[:birthdate].gsub("-", "")
+
+  if Person.valid_birthdate(birthdate)
+    birth_path_num = Person.get_birth_path_num(birthdate)
+    redirect "/message/#{birth_path_num}"
+  else
+    @error = "Oops! You should enter a valid birthdate in the form of mmddyyyy. Try again!"
+    erb :form    
   end
-      erb :"/people/new"
-  end
-  end
+end
 
 def setup_index_view
   birthdate = params[:birthdate]
