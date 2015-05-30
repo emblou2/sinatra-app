@@ -1,3 +1,11 @@
+<% if !@errors.nil? %>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  <%= @errors %>
+</div>
+<% end %>
+
 <form action="<%= people_form_action(@person) %>" method="post" id="<%= people_form_id(@person) %>" class="<%= people_form_class(@person) %>">
   <input type="hidden" name="_method" value="<%= people_form_method(@person) %>" />
   <div>
@@ -11,7 +19,7 @@
   </div>
 
   <div>
-    <label for="birthdate">Birthdate:</label>
+    <label for="birthdate">Birthdate (mmddyyyy):</label>
     <input name="birthdate" type="date" value="<%= @person.birthdate %>" />
   </div>
 
