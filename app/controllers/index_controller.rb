@@ -26,9 +26,12 @@ end
       @person.save
       redirect "/people/#{@person.id}"
     else
-      @error = "The data you entered isn't valid"
+      @errors = ''
+      @person.errors.full_messages.each do |message|
+        @errors = "#{@errors} #{message}."
+  end
       erb :"/people/new"
-    end
+  end
   end
 
 def setup_index_view
