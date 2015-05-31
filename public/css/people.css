@@ -6,3 +6,7 @@ body {
     color: #252525;
 
 }
+
+form  { display: table;      }
+label { display: table-cell; }
+input { display: table-cell; }
