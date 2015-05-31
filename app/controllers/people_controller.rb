@@ -9,11 +9,13 @@ get '/people/new' do
 end
 
 post '/people' do
+  if params[:birthdate] != ""
   if params[:birthdate].include?("-")
     birthdate = params[:birthdate]
   else
-    birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
+    birthdate = Date.strptime(params[:birthdate], "%m%d%Y") if params[:birthdate]
   end
+end
   
   @person = Person.create(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
   if @person.valid?
@@ -33,6 +35,13 @@ get '/people/:id/edit' do
 end
 
 put '/people/:id' do
+  if params[:birthdate] !=""
+    if params[:birthdate].include?("-")
+      birthdate = params[:birthdate]
+    else
+      birthdate = Date.strptime(params[:birthdate], "%m%d%Y") if params[:birthdate]
+    end
+  end
   @person = Person.find(params[:id])
   @person.first_name = params[:first_name]
   @person.last_name = params[:last_name]
