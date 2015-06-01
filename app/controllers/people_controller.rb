@@ -9,7 +9,7 @@ get '/people/new' do
 end
 
 post '/people' do
-  if params[:birthdate] != ""
+  if Person.valid_birthdate(params[:birthdate])
   if params[:birthdate].include?("-")
     birthdate = params[:birthdate]
   else
